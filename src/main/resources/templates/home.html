@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div>
+    <h1>Calculator</h1>
+    <div th:if="${error}">
+        <p style="color: red;">[[${error}]]</p>
+    </div>
+    <form th:action="@{/calculate}" method="get">
+        <input type="text" name="num1" th:value="${num1}" placeholder="Number 1">
+        <input type="text" name="num2" th:value="${num2}" placeholder="Number 2">
+        <select name="operation">
+            <option value="add" th:selected="${operation == 'add'}">Add</option>
+            <option value="subtract" th:selected="${operation == 'subtract'}">Subtract</option>
+            <option value="multiply" th:selected="${operation == 'multiply'}">Multiply</option>
+            <option value="divide" th:selected="${operation == 'divide'}">Divide</option>
+        </select>
+        <button type="submit">Calculate</button>
+    </form>
+    <div th:if="${result != null}">
+        <h2>Result: [[${result}]]</h2>
+    </div>
+</div>
+</body>
+</html>
